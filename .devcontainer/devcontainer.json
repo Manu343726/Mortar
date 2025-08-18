@@ -1,0 +1,43 @@
+// For more information, see:
+// https://code.visualstudio.com/docs/remote/containers
+{
+    "name": "Go 1.24.2 DevContainer",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".",
+        "options": [
+            "--platform=linux/arm64"
+        ]
+    },
+    "runArgs": [
+        "--platform=linux/arm64"
+    ],
+    "features": {
+        // Enable docker-in-docker to run the build scripts without changing anything.
+        // If running task build you run into qemu segfaulting during installation of libc-bin,
+        // run the following command in the terminal and try again:
+        //     docker run --rm --privileged multiarch/qemu-user-static --reset -p yes -c yes
+        // See https://github.com/docker/buildx/issues/1170 for details
+        //"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "go.formatTool": "gofmt",
+                "go.lintTool": "golangci-lint",
+                "go.lintOnSave": "package",
+                "go.testOnSave": true,
+                "go.useLanguageServer": true,
+                "editor.formatOnSave": true,
+                "terminal.integrated.defaultProfile.linux": "bash"
+            },
+            "extensions": [
+                "golang.Go",
+                "ms-azuretools.vscode-docker",
+                "eamodio.gitlens",
+                "GitHub.copilot-chat",
+                "GitHub.copilot"
+            ]
+        }
+    }
+}
