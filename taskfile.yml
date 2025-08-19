@@ -14,7 +14,7 @@ tasks:
       - rm -rf build
       - mkdir -p build
       - mkdir -p build/lib
-      - GOWORK=off go build -gcflags="all=-N -l" -v -x
+      - GOWORK=off go build -gcflags="all=-N -l" -v -x -o build/mortar
     silent: true
 
   package:

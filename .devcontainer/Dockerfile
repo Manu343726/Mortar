@@ -39,6 +39,10 @@ RUN apt-get update && apt-get install -y \
     libsdl2-image-dev \
     libsdl2-gfx-dev
 
+# Install adb, ssh, scp, and sshpass for deployments
+RUN apt-get install adb openssh-client sshpass -y && \
+    rm -rf /var/lib/apt/lists/*
+
 # Set default shell to bash
 SHELL ["/usr/bin/bash", "-c"]
 
